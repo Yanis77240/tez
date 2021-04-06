@@ -1,0 +1,24 @@
+podTemplate {
+    node('tdp-builder') {
+        stage('Git clone') {
+            checkout([$class: 'GitSCM', branches: [[name: 'branch-0.9.1-TDP']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'http://gitlab.adaltas.com/dataclan/tez.git']]])
+        }
+        stage('Build') {
+            container('tdp-builder'){
+                sh '''
+                mvn -B -Dmaven.repo.local=./.m2 -Phadoop28 -P\\!hadoop27 -DskipTests clean package
+                '''
+            }
+        }
+        stage('Run unit tests') {
+            container('tdp-builder') {
+                sh '''
+                mvn -B -Dmaven.repo.local=./.m2 -Phadoop28 -P\\!hadoop27 clean package --fail-never
+                '''
+            }
+        }
+        stage('Publish tests results') {
+            junit '**/surefire-reports/*.xml'
+        }
+    }
+}

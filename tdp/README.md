@@ -1,0 +1,29 @@
+# TDP Tez Notes
+
+The version 0.9.1-TDP-0.1.0-SNAPSHOT of Apache Hive is based on the `branch-0.9.1` tag of the Apache [repository](https://github.com/apache/tez/tree/branch-0.9.1).
+
+## Jenkinfile
+
+The file `./Jenkinsfile-sample` can be used in a Jenkins / Kubernetes environment to build and execute the unit tests of the Tez project. See []() for details on the environment.
+
+## Making a release
+
+```
+mvn -Phadoop28 -P\!hadoop27 -DskipTests clean install
+```
+
+The command generates a `.tar.gz` file of the release at `./tez-dist/target/tez-0.9.1-TDP-0.1.0-SNAPSHOT.tar.gz`.
+
+## Testing parameters
+
+```
+mvn -Phadoop28 -P\!hadoop27 -DskipTests test --fail-never
+```
+
+- -Phadoop28: Activates the necessary Maven profile for Hadoop > 2.8 (as mentionned in `tez/BUILDING.txt`)
+- -P\!hadoop27: De-activates the Maven profile for Hadoop < 2.8
+- --fail-never: Does not interrupt the tests if one module fails
+
+## Test execution notes
+
+See `./test_notes.txt`

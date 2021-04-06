@@ -1,0 +1,24 @@
+# Tests failures
+
+org.apache.tez.common.TestTezCommonUtils
+java.lang.NoClassDefFoundError: org/apache/hadoop/hdfs/server/datanode/fsdataset/impl/FsDatasetFactory
+--> Fixed in https://issues.apache.org/jira/browse/TEZ-3898
+
+org.apache.tez.tests.TestExtServicesWithLocalMode.test1
+
+org.apache.tez.tests.TestExternalTezServices.org.apache.tez.tests.TestExternalTezServices
+org.apache.tez.tests.TestExternalTezServicesErrors.org.apache.tez.tests.TestExternalTezServicesErrors
+--> Fixed in https://issues.apache.org/jira/browse/TEZ-3931
+
+org.apache.tez.mapreduce.processor.reduce.TestReduceProcessor.testReduceProcessor
+--> Fixed in https://issues.apache.org/jira/browse/TEZ-3927
+
+org.apache.tez.dag.history.logging.ats.TestATSV15HistoryLoggingService.testNonSessionDomains
+--> Fixed in https://issues.apache.org/jira/browse/TEZ-3896
+
+org.apache.tez.test.TestSecureShuffle.testSecureShuffle[test[sslInCluster:true, resultWithTezSSL:0, resultWithoutTezSSL:1, asyncHttp:false]]
+org.apache.tez.test.TestSecureShuffle.testSecureShuffle[test[sslInCluster:true, resultWithTezSSL:0, resultWithoutTezSSL:1, asyncHttp:true]]
+org.apache.tez.test.TestSecureShuffle.testSecureShuffle[test[sslInCluster:false, resultWithTezSSL:1, resultWithoutTezSSL:0, asyncHttp:true]]
+org.apache.tez.test.TestSecureShuffle.testSecureShuffle[test[sslInCluster:false, resultWithTezSSL:1, resultWithoutTezSSL:0, asyncHttp:false]]
+--> Issue with the netty version: java.lang.NoSuchMethodError: org.jboss.netty.handler.codec.http.HttpResponse.headers()Lorg/jboss/netty/handler/codec/http/HttpHeaders;
+--> Fixed in https://issues.apache.org/jira/browse/TEZ-3902
