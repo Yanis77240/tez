@@ -27,3 +27,7 @@ mvn -Phadoop28 -P\!hadoop27 -DskipTests test --fail-never
 ## Test execution notes
 
 See `./test_notes.txt`
+
+## Build notes
+
+Commit `1a88da0221fb822e319ed81c8410143217336e4d` ([TEZ-3929](https://issues.apache.org/jira/browse/TEZ-3929)) backported to avoid an issue with incompatible versions of jersey-client (see `hive/tdp/README.md` for details).
