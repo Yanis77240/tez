@@ -9,7 +9,7 @@ The file `./Jenkinsfile-sample` can be used in a Jenkins / Kubernetes environmen
 ## Making a release
 
 ```
-mvn -Phadoop28 -P\!hadoop27 -DskipTests clean install
+mvn clean install -pl \!tez-ui -Phadoop28 -P\!hadoop27 -DskipTests
 ```
 
 The command generates a `.tar.gz` file of the release at `./tez-dist/target/tez-0.9.1-TDP-0.1.0-SNAPSHOT.tar.gz`.
@@ -17,9 +17,10 @@ The command generates a `.tar.gz` file of the release at `./tez-dist/target/tez-
 ## Testing parameters
 
 ```
-mvn -Phadoop28 -P\!hadoop27 -DskipTests test --fail-never
+mvn test -pl \!tez-ui -Phadoop28 -P\!hadoop27 -DskipTests --fail-never
 ```
 
+- -pl \!tez-ui: Disable `tez-ui` maven project
 - -Phadoop28: Activates the necessary Maven profile for Hadoop > 2.8 (as mentionned in `tez/BUILDING.txt`)
 - -P\!hadoop27: De-activates the Maven profile for Hadoop < 2.8
 - --fail-never: Does not interrupt the tests if one module fails
