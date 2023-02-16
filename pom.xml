@@ -95,9 +95,9 @@
       <layout>default</layout>
     </pluginRepository>
     <pluginRepository>
-      <id>${distMgmtSnapshotsId}</id>
-      <name>${distMgmtSnapshotsName}</name>
-      <url>${distMgmtSnapshotsUrl}</url>
+      <id>nexus</id>
+      <name>my Nexus</name>
+      <url>http://172.19.0.2:8081/repository/my-maven-test/</url>
       <layout>default</layout>
     </pluginRepository>
   </pluginRepositories>
