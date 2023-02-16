@@ -26,7 +26,7 @@ pipeline {
             steps {
                 echo "Deploy..."
                 withCredentials([usernamePassword(credentialsId: '4b87bd68-ad4c-11ed-afa1-0242ac120002', passwordVariable: 'pass', usernameVariable: 'user')]) {
-                    sh 'mvn clean deploy -DskipTests -s settings.xml'
+                    sh 'mvn clean deploy -pl !tez-ui -Phadoop28 -P !hadoop27 -DskipTests -s settings.xml'
                 }
             }        
         }
