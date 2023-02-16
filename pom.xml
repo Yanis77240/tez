@@ -73,17 +73,17 @@
       <url>${distMgmtStagingUrl}</url>
     </repository>
     <snapshotRepository>
-      <id>${distMgmtSnapshotsId}</id>
-      <name>${distMgmtSnapshotsName}</name>
-      <url>${distMgmtSnapshotsUrl}</url>
+      <id>nexus</id>
+      <name>my Nexus</name>
+      <url>http://172.19.0.3:8081/repository/my-maven-test/</url>
     </snapshotRepository>
   </distributionManagement>
 
   <repositories>
     <repository>
-      <id>${distMgmtSnapshotsId}</id>
-      <name>${distMgmtSnapshotsName}</name>
-      <url>${distMgmtSnapshotsUrl}</url>
+      <id>nexus</id>
+      <name>my Nexus</name>
+      <url>http://172.19.0.3:8081/repository/my-maven-test/</url>
     </repository>
   </repositories>
 
