@@ -75,7 +75,7 @@
     <snapshotRepository>
       <id>nexus</id>
       <name>my Nexus</name>
-      <url>http://172.19.0.3:8081/repository/my-maven-test/</url>
+      <url>http://172.19.0.2:8081/repository/my-maven-test/</url>
     </snapshotRepository>
   </distributionManagement>
 
@@ -83,7 +83,7 @@
     <repository>
       <id>nexus</id>
       <name>my Nexus</name>
-      <url>http://172.19.0.3:8081/repository/my-maven-test/</url>
+      <url>http://172.19.0.2:8081/repository/my-maven-test/</url>
     </repository>
   </repositories>
 
