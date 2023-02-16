@@ -18,7 +18,7 @@ pipeline {
             steps {
                 echo "Building..."
                 sh '''
-                mvn clean install -pl \!tez-ui -Phadoop28 -P\!hadoop27 -DskipTests
+                mvn clean install -pl !tez-ui -Phadoop28 -P !hadoop27 -DskipTests
                 '''
             }
         }
