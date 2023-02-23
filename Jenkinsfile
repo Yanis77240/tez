@@ -8,10 +8,6 @@ pipeline {
         pollSCM '0 1 * * *'
       }
     stages {
-        stage ('Invoke pipeline tdp-hadoop') {
-            steps {
-                build job: 'tdp-hadoop'
-            }
         }
         stage('clone') {
             steps {
