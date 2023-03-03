@@ -22,6 +22,14 @@ pipeline {
                 '''
             }
         }
+        stage('Test') {
+            steps {
+                echo "Testing..."
+                sh '''
+                mvn clean test -pl \!tez-ui -Phadoop28 -P\!hadoop27 -Pnative --fail-never
+                '''
+            }
+        }
         stage("Publish to Nexus Repository Manager") {
             steps {
                 echo "Deploy..."
