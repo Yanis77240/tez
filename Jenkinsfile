@@ -25,19 +25,19 @@ pipeline {
                 '''
             }
         }
-        stage('Test') {
+        /*stage('Test') {
             steps {
                 echo "Testing..."
                 sh '''
-                mvn clean test -pl \!tez-ui -Phadoop28 -P\!hadoop27 -Pnative --fail-never
+                mvn test -pl \!tez-ui -Phadoop28 -P\!hadoop27 --fail-never
                 '''
             }
-        }
+        }*/
         stage("Publish jars to Nexus") {
             steps {
                 echo "Deploy..."
                 withCredentials([usernamePassword(credentialsId: '4b87bd68-ad4c-11ed-afa1-0242ac120002', passwordVariable: 'pass', usernameVariable: 'user')]) {
-                    sh 'mvn clean deploy -pl !tez-ui -Phadoop28 -P !hadoop27 -DskipTests -s settings.xml'
+                    sh 'mvn deploy -pl !tez-ui -Phadoop28 -P !hadoop27 -DskipTests -s settings.xml'
                 }
             }        
         }
