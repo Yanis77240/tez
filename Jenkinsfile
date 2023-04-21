@@ -19,7 +19,7 @@ podTemplate(containers: [
             stage ('Build') {
                 echo "Building..."
                 sh '''
-                mvn clean install -pl !tez-ui -Phadoop28 -P !hadoop27 -DskipTests -s settings.xml
+                mvn clean install -pl !tez-ui -Phadoop28 -P !hadoop27 -DskipTests
                 '''
             }
             /*stage('Test') {
