@@ -1,0 +1,17 @@
+diff --git tez-api/pom.xml tez-api/pom.xml
+index 763534f..13b6c01 100644
+--- tez-api/pom.xml
++++ tez-api/pom.xml
+@@ -225,6 +225,12 @@
+           <artifactId>hadoop-hdfs-client</artifactId>
+           <version>${hadoop.version}</version>
+        </dependency>
++       <dependency>
++          <groupId>org.apache.hadoop</groupId>
++          <artifactId>hadoop-hdfs</artifactId>
++          <scope>test</scope>
++          <version>${hadoop.version}</version>
++       </dependency>
+       </dependencies>
+     </profile>
+   </profiles>

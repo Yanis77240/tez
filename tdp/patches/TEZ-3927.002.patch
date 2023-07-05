@@ -1,0 +1,25 @@
+diff --git tez-mapreduce/src/main/java/org/apache/tez/mapreduce/hadoop/MRJobConfig.java tez-mapreduce/src/main/java/org/apache/tez/mapreduce/hadoop/MRJobConfig.java
+index 02c74b278..334a7dba3 100644
+--- tez-mapreduce/src/main/java/org/apache/tez/mapreduce/hadoop/MRJobConfig.java
++++ tez-mapreduce/src/main/java/org/apache/tez/mapreduce/hadoop/MRJobConfig.java
+@@ -122,6 +122,8 @@ public interface MRJobConfig {
+ 
+   public static final String CACHE_ARCHIVES_VISIBILITIES = "mapreduce.job.cache.archives.visibilities";
+ 
++  public static final String FILEOUTPUTCOMMITTER_ALGORITHM_VERSION = "mapreduce.fileoutputcommitter.algorithm.version";
++
+   /**
+    * @deprecated Symlinks are always on and cannot be disabled.
+    */
+diff --git tez-mapreduce/src/test/java/org/apache/tez/mapreduce/processor/reduce/TestReduceProcessor.java tez-mapreduce/src/test/java/org/apache/tez/mapreduce/processor/reduce/TestReduceProcessor.java
+index 17c790341..0223482da 100644
+--- tez-mapreduce/src/test/java/org/apache/tez/mapreduce/processor/reduce/TestReduceProcessor.java
++++ tez-mapreduce/src/test/java/org/apache/tez/mapreduce/processor/reduce/TestReduceProcessor.java
+@@ -117,6 +117,7 @@ public class TestReduceProcessor {
+         TezTaskOutput.class);
+     job.set(TezRuntimeConfiguration.TEZ_RUNTIME_PARTITIONER_CLASS, MRPartitioner.class.getName());
+     job.setNumReduceTasks(1);
++    job.setInt(MRJobConfig.FILEOUTPUTCOMMITTER_ALGORITHM_VERSION, 1);
+   }
+ 
+   @Before
