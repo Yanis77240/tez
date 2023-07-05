@@ -22,12 +22,12 @@ podTemplate(containers: [
                 mvn clean install -pl !tez-ui -Phadoop28 -P !hadoop27 -DskipTests
                 '''
             }
-            /*stage('Test') {
+            stage('Test') {
                 echo "Testing..."
                 sh '''
-                mvn test -pl \!tez-ui -Phadoop28 -P\!hadoop27 --fail-never
+                mvn clean test -pl \!tez-ui -Phadoop28 -P\!hadoop27 --fail-never
                 '''
-            }*/
+            }
             stage('Deliver') {
                 echo "Deploy..."
                 withCredentials([usernamePassword(credentialsId: '4b87bd68-ad4c-11ed-afa1-0242ac120002', passwordVariable: 'pass', usernameVariable: 'user')]) {
@@ -38,7 +38,7 @@ podTemplate(containers: [
                 echo "Publish tar.gz..."
                 withEnv(["number=${currentBuild.number}"]) {
                     withCredentials([usernamePassword(credentialsId: '4b87bd68-ad4c-11ed-afa1-0242ac120002', passwordVariable: 'pass', usernameVariable: 'user')]) {
-                        sh 'curl -v -u $user:$pass --upload-file tez-dist/target/tez-0.9.1-TDP-0.1.0-SNAPSHOT.tar.gz http://10.110.4.212:8081/artifactory/maven-tar-files/tez/tez-0.9.1-TDP-0.1.0-SNAPSHOT-${number}.tar.gz'
+                        sh 'curl -v -u $user:$pass --upload-file tez-dist/target/tez-0.9.1-TDP-0.1.0-SNAPSHOT.tar.gz http://10.110.4.212:8081/repository/maven-tar-files/tez/tez-0.9.1-TDP-0.1.0-SNAPSHOT-${number}.tar.gz'
                     }
                 }
             }       
