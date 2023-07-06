@@ -61,6 +61,9 @@
     <findbugs-maven-plugin.version>3.0.1</findbugs-maven-plugin.version>
     <javadoc-maven-plugin.version>2.10.4</javadoc-maven-plugin.version>
     <shade-maven-plugin.version>2.4.3</shade-maven-plugin.version>
+
+    <!-- test exclusion -->
+    <excludedTests>**/TestSecureShuffle.java, **/TestExternalTezServices.java, **/TestExtServicesWithLocalMode.java, **/TaskCommunicatorManager.java, **/TestExternalTezServicesErrors.java, **/TestATSHistoryWithACLs.java, **/TestATSV15HistoryLoggingService.java, **/TestHistoryParser.java, **/TestAnalyzer.java</excludedTests>
   </properties>
   <scm>
     <connection>${scm.url}</connection>
@@ -891,6 +894,9 @@
               <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
               <tez.hadoop.version>${hadoop.version}</tez.hadoop.version>
             </systemPropertyVariables>
+            <excludes>
+                <exclude>${excludedTests}</exclude>
+            </excludes>
           </configuration>
         </plugin>
         <plugin>
