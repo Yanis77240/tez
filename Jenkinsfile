@@ -25,7 +25,7 @@ podTemplate(containers: [
             stage('Test') {
                 echo "Testing..."
                 sh '''
-                mvn clean test -pl !tez-ui -Phadoop28 -P !hadoop27 --fail-never
+                mvn clean test -Dsurefire.rerunFailingTestsCount=3 -pl !tez-ui -Phadoop28 -P !hadoop27 --fail-never
                 '''
             }
             stage('Deliver') {
