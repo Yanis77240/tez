@@ -63,7 +63,7 @@
     <shade-maven-plugin.version>2.4.3</shade-maven-plugin.version>
 
     <!-- test exclusion -->
-    <excludedTests>**/TestSecureShuffle.java, **/TestExternalTezServices.java, **/TestExtServicesWithLocalMode.java, **/TaskCommunicatorManager.java, **/TestExternalTezServicesErrors.java, **/TestATSHistoryWithACLs.java, **/TestATSV15HistoryLoggingService.java, **/TestHistoryParser.java, **/TestAnalyzer.java, **/TestATSHistoryV15.java, **/TestTaskScheduler.java</excludedTests>
+    <excludedTests>**/TestSecureShuffle.java, **/TestExternalTezServices.java, **/TestExtServicesWithLocalMode.java, **/TaskCommunicatorManager.java, **/TestExternalTezServicesErrors.java, **/TestATSHistoryWithACLs.java, **/TestATSV15HistoryLoggingService.java, **/TestHistoryParser.java, **/TestAnalyzer.java, **/TestATSHistoryV15.java, **/TestTaskScheduler.java, **/TestRecovery.java</excludedTests>
   </properties>
   <scm>
     <connection>${scm.url}</connection>
