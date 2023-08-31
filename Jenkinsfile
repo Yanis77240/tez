@@ -17,7 +17,7 @@ podTemplate(containers: [
                 withEnv(["file=${input message: 'Select file in http://10.10.10.11:30000/repository/java-test-reports/', parameters: [string('number of results file')]}"]) {
                     withEnv(["number=${currentBuild.number}"]) {
                         sh '''
-                        cd test_comparison
+                        cd test_comparison_java_old
                         curl -v http://10.10.10.11:30000/repository/java-test-reports/tez/${file} > ${file}
                         python3 comparison-file-check.py ${file}
                         echo "python3 main.py ${number} ${file}" > transformation.sh
@@ -55,7 +55,7 @@ podTemplate(containers: [
                         /$
                         /* Perform the data transformation and the comparison*/
                         sh '''
-                        cd test_comparison
+                        cd test_comparison_java_old
                         ./transformation.sh
                         ./decision.sh ${number}
                         curl -v -u $user:$pass --upload-file results-${number}.json http://10.110.4.212:8081/repository/java-test-reports/hadoop/results-${number}.json
