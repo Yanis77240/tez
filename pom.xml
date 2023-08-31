@@ -47,7 +47,7 @@
     <enforced.java.version>[${javac.version},)</enforced.java.version>
     <distMgmtSnapshotsId>nexus</distMgmtSnapshotsId>
     <distMgmtSnapshotsName>My nexus</distMgmtSnapshotsName>
-    <distMgmtSnapshotsUrl>http://172.19.0.2:8081/repository/my-maven-test/</distMgmtSnapshotsUrl>
+    <distMgmtSnapshotsUrl>http://10.110.4.212:8081/repository/my-maven-test/</distMgmtSnapshotsUrl>
     <distMgmtStagingId>apache.staging.https</distMgmtStagingId>
     <distMgmtStagingName>Apache Release Distribution Repository</distMgmtStagingName>
     <distMgmtStagingUrl>https://repository.apache.org/service/local/staging/deploy/maven2</distMgmtStagingUrl>
