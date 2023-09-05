@@ -8,7 +8,7 @@ The function below allows the user to compare failed tests of the current run wi
 
 The following function works only when Maven runs tests executed by the surefire plugin which are tests written in Java as well as Scala-tests executed by the scalatest plugin and where the output display has the same style as the maven-surefire-plugin version 2.14.1, 2.20.0 or 3.0.0M.
 
-The Python functions work with Python >= 3.6. The code varies a little wether you use Python 3.6 or a version superior to 3.9. Go to the `scala_tranformer.py` and concerning the setting of `None` values for missing values and the boolean transformation of the `aborted` column, uncomment the commands for the Python version you have and comment the other one. The tdp-builder image uses python 3.6 so the corresponding commands are used if not modified.
+The Python functions work with Python >= 3.6. The code varies a little wether you use Python 3.6 or a version superior to 3.9. Go to the `scala_tranformer.py` and concerning the setting of `None` values for missing values and the boolean transformation of the `aborted` column, uncomment the instructions for the Python version you have and comment the other one. The tdp-builder image uses python 3.6 so the corresponding instructions are used if not modified.
 
 ## How to integrate the function into the project
 
@@ -46,14 +46,14 @@ stage('Test') {
             /*sh 'mvn surefire-report:report-only  -Daggregate=true'
             sh 'curl -v -u $user:$pass --upload-file target/site/surefire-report.html http://path_to_reporting_directory/surefire-report-${number}.html'
             /* extract the java-test and scalatest-plugin data output and remove all color signs */
-            sh'./test_comparison/src/grep_commands/grep-surefire-2.20.sh'
+            sh'./test_comparison/src/grep_commands/grep-surefire-{version}.sh'
             /*sh'./test_comparison/src/grep_commands/grep-scalatest.sh'*/
             /* Perform the data transformation and the comparison*/
             sh '''
             cd test_comparison
             ./transformation.sh
             ./src/decision.sh ${number}
-            curl -v -u $user:$pass --upload-file results-${number}.json http://10.110.4.212:8081/repository/scala-test-reports/spark/results-${number}.json
+            curl -v -u $user:$pass --upload-file results-${number}.json http://path_to_the_project_results_directory/results-${number}.json
             '''
         }
     }
@@ -74,6 +74,8 @@ sh 'curl -v -u $user:$pass --upload-file target/site/surefire-report.html http:/
 ```
 **Note:** You need to have the maven-surefire-report-plugin in your project. If you do not have it, you need to set the plugin in the pom.xml. Also do not forget to set the path `path_to_reporting_directory`.
 
-7. If you have scalatests comment out the command `sh'./test_comparison/src/grep_commands/grep-scalatest.sh'`
+7. Put the adequate surefire version grep command file
 
-8. In the `decision.sh` script, Set the path to the test comparison folder in the external repository.
+8. If you have scalatests comment out the command `sh'./test_comparison/src/grep_commands/grep-scalatest.sh'`
+
+9. In the `decision.sh` script, Set the path to the test comparison folder in the external repository.
