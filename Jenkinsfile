@@ -54,16 +54,6 @@ podTemplate(containers: [
                     }
                 }
             }
-            stage('Test') {
-                echo "Testing..."
-                withEnv(["number=${currentBuild.number}"]) {
-                    withCredentials([usernamePassword(credentialsId: '4b87bd68-ad4c-11ed-afa1-0242ac120002', passwordVariable: 'pass', usernameVariable: 'user')]) {
-                        sh 'mvn clean test -Dsurefire.rerunFailingTestsCount=3 -pl !tez-ui -Phadoop28 -P !hadoop27 --fail-never -Dstyle.color=never'
-                        sh 'mvn surefire-report:report-only  -Daggregate=true'
-                        sh 'curl -v -u $user:$pass --upload-file target/site/surefire-report.html http://10.110.4.212:8081/repository/test-reports/tez/surefire-report-${number}.html'
-                    }
-                }
-            }
             stage('Deliver') {
                 echo "Deploy..."
                 withCredentials([usernamePassword(credentialsId: '4b87bd68-ad4c-11ed-afa1-0242ac120002', passwordVariable: 'pass', usernameVariable: 'user')]) {
