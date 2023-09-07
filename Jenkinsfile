@@ -18,7 +18,7 @@ podTemplate(containers: [
                     withEnv(["number=${currentBuild.number}"]) {
                         sh '''
                         cd test-comparison
-                        curl -v http://10.10.10.11:30000/repository/component-test-comparison/tez-0.92/${file} > ${file}
+                        curl -v http://10.10.10.11:30000/repository/component-test-comparison/tez-0.9/${file} > ${file}
                         python3 src/python/comparison_file_check.py ${file}
                         echo "python3 src/python/main.py 2.14 ${number} ${file}" > transformation.sh
                         chmod 777 transformation.sh
@@ -49,7 +49,7 @@ podTemplate(containers: [
                         cd test-comparison
                         ./transformation.sh
                         ./src/decision.sh ${number}
-                        curl -v -u $user:$pass --upload-file results-${number}.json http://10.110.4.212:8081/repository/component-test-comparison/tez-0.92/results-${number}.json
+                        curl -v -u $user:$pass --upload-file results-${number}.json http://10.110.4.212:8081/repository/component-test-comparison/tez-0.9/results-${number}.json
                         '''
                     }
                 }
